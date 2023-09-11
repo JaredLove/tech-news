@@ -1,0 +1,39 @@
+<section class="homeHero">
+  <div>
+    <h1>Your source for the latest tech news, trends, and insights.</h1>
+  </div>
+</section>
+
+
+<section>
+<ol class="post-list">
+  {{#if postts.length}}
+  <h1>Recent Post</h1>
+  {{#each postts as |post|}}
+  
+  <li>
+    {{> post-info post}}
+  </li>
+  {{/each}}
+  <a href="/allposts"><button id="load-more">See All Posts</button></a>
+  {{else}}
+  <h1>No Posts Yet</h1>
+  {{/if}}
+</ol>
+</section>
+
+
+<section>
+  <h1>Featured Post</h1>
+  {{#if userrs.posts.length}}
+  {{#each userrs.posts as |post|}}
+  {{> post-info post}}
+  {{/each}}
+  {{else}}
+  <h1>No Posts Yet</h1>
+  {{/if}}
+
+</section>
+
+
+

@@ -1,0 +1,45 @@
+<div>
+    <a href="/dashboard"> &larr; Back to dashboard</a>
+    <h2>
+        Edit User
+        Editing {{user.username}}
+    </h2>
+</div>
+
+<form action="">
+    <div>
+        <h1>Current Username: <span>{{user.username}}</span></h1>
+        
+    </div>
+    <div>
+        <label for="username">New Username:</label>
+        <input name="username" type="text" value="{{user.username}}"/>
+    </div>
+    <div>
+    
+        <h1>Current Email: <span>{{user.email}}</span></h1>
+        
+    </div>
+    <div>
+        <label for="email">New Email:</label>
+        <input name="email" type="text" value="{{user.email}}"/>
+    </div>
+    <div>
+        <h1>New Password</h1>
+        <input name="password" type="password" value="{{user.password}}" />
+    </div>
+    <button type="submit" class="update-user-btn">Save user</button>
+    <button type="button" class="delete-user-btn">Delete user</button>
+</form>
+
+
+
+
+
+
+
+
+
+
+<script src="/javascript/edit-user.js"></script>
+<script src="/javascript/delete-user.js"></script>

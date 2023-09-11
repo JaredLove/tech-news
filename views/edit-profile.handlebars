@@ -1,0 +1,16 @@
+<form class="edit-profile-form">
+   {{#each profileImages }}
+      <label>
+        <input type="radio" name="selectedImage" id="input1" value="{{ this }}"
+          {{#ifCond user.profilepicture '===' this }} checked {{/ifCond}}>
+        <img src="/images/{{ this }}" alt="Profile Image" width="100">
+      </label><br>
+    {{/each }}
+    <button type="submit">Update Profile</button>
+       
+</form>
+
+
+
+
+<script src="/javascript/edit-profile.js"></script>

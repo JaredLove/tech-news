@@ -1,0 +1,42 @@
+<div>
+ <a href="/profile/edit/{{user.id}}" class="edit-link">Edit Profile</a>
+    <a href="/dashboard" class="edit-link">Back to Dashboard</a>
+     <a href="/admin/edit/user/{{user.id}}">Edit User Settings</a>
+</div>
+<div>
+    <h1>{{user.username}}'s Profile</h1>
+    {{#if user.profilepicture}}
+    <img src="/images/{{user.profilepicture}}" alt="Profile Image" width="200" style="border-radius: 5%;">
+    {{else}} 
+    <img src="/images/default-profile-picture.jpg" alt="Profile Image" width="200">
+    {{/if}}
+
+    {{#if user.posts.length}}
+    <section>
+        <h2>{{user.username}} Posts</h2>
+        <ol>
+            {{#each user.posts as |post|}}
+            <li>
+                <article class="post">
+                    <div class="title">
+                        <a href="{{post_url}}" target="_blank">{{title}}</a>
+                        <span>({{format_url post_url}})</span>
+                    </div>
+                    <div class="meta">
+                        created at {{format_date created_at}}
+                        |
+                        <a href="/post/{{id}}">{{comments.length}} {{format_plural "comment" comments.length}}</a>
+                    </div>
+                </article>
+            </li>
+            {{/each}}
+        </ol>
+    </section>
+    {{else}}
+    <h3>{{user.username}} has no post yet.</h3>
+    <h4>Nothing To See Here!</h4>
+    {{/if}}
+        
+
+</div>
+<br>

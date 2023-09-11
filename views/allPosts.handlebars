@@ -1,0 +1,22 @@
+<section class="">
+<ol class="post-list" id="start">
+  <h1>All Post</h1>
+  {{#each posts as |post|}}
+  
+  <li>
+     {{> post-info post }}
+  </li>
+  {{/each}}
+</ol>
+</section>
+
+
+<div class="pagination">
+    {{#if prevPage}}
+        <a href="/allposts?page={{prevPage}}">Previous</a>
+    {{/if}}
+
+    {{#if nextPage}}
+        <a href="/allposts?page={{nextPage}}">Next</a>
+    {{/if}}
+</div>

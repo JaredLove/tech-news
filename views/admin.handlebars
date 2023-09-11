@@ -1,0 +1,51 @@
+<section class="users">
+    <h1>Users</h1>
+    {{#each users}}
+    {{#if admin}}
+    {{else}}
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Admin</th>
+        <tr>
+            <td>{{this.id}}</td>
+            <td>{{this.username}}</td>
+            <td>{{this.email}}</td>
+            <td>{{this.admin}}</td>
+            <td><a href="/admin/edit/user/{{this.id}}">Edit</a></td>
+
+            
+            
+            {{/if}}
+        </tr>
+    </table>
+    {{/each}}
+</section>
+
+<section class="userAdmins">
+    <h1>Admins</h1>
+    {{#each users}}
+    {{#if this.admin}}
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Admin</th>
+        <tr>
+            <td>{{this.id}}</td>
+            <td>{{this.username}}</td>
+            <td>{{this.email}}</td>
+            <td>{{this.admin}}</td>
+
+            {{else}}
+            {{/if}}
+        </tr>
+    </table>
+    {{/each}}
+</section>
+
+<section class="posts">
+</section>  
