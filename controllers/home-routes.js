@@ -6,7 +6,7 @@ const { Post, User, Comment } = require('../models');
 // The res.render() method can accept a second argument, an object, which includes all of the data you want to pass to your template.
 router.get('/', (req, res) => {
   console.log('======================');
-  const posts = Post.findAll({
+  Post.findAll({
         limit: 5,
         order: [['created_at', 'DESC']],
         attributes: [
@@ -32,22 +32,8 @@ router.get('/', (req, res) => {
           }
         ]
       })
-      const users = User.findOne({ 
-        where: { id: 11 },
-        attributes: [
-          'id',
-          'username',
-        ],
-        include: [
-          {
-            model: Post,
-            attributes: ['id', 'title', 'post_url', 'created_at']
-          },
-        ]
-      })
 
-      Promise.all([posts, users])
-        .then(([post, user]) => {
+      .then(dbPostData => {
           // pass a single post object into the homepage template
         //   The data that Sequelize returns is actually a Sequelize 
         //   object with a lot more information attached to it than you 
@@ -61,12 +47,9 @@ router.get('/', (req, res) => {
         // from adding other properties to the template later on. To avoid future 
         // headaches, we can simply add the array to an object and continue 
         // passing data to the template as an object.
-        const postts = post.map(post => post.get({ plain: true }));
-        const userrs = user.get({ plain: true });
-        console.log(userrs.posts);
+        const posts = dbPostData.map(post=> post.get({ plain: true }));
         res.render('homepage', { 
-          postts,
-          userrs,
+          posts,
           admin: req.session.admin,
           loggedIn: req.session.loggedIn
         });
